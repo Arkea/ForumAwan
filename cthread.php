@@ -1,5 +1,6 @@
 <?php
 
+	date_default_timezone_set("Asia/Jakarta");
 	echo "Today is " . date("Y-m-d H:i:s") . "<br>";
 	if(defined('IS_INDEX') == false){
 		die("Stop!");

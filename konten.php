@@ -5,6 +5,10 @@
 	if(defined('IS_INDEX') == false){
 		die("Stop!");
 	} else {
+		$logged = 0;
+		if (isset($_SESSION["logged"]) and $_SESSION["logged"] = 1) {
+			$logged = 1;
+		}
 		$god = 0;
 		if (isset($_SESSION["godmode"]) and $_SESSION["godmode"] = 1) {
 			$god = 1;
@@ -22,16 +26,20 @@
 		if ($title['archived'] != 1) {
 			echo $thread['id_thread']." ";
 			echo $content['image']." ".$title['subject']." ".$content['date']." No. ".$content['id']." <a href='?page=reply&t=".$id_t."'>balas</a>";
-			if ($god) {
+			if ($logged) {
 				echo " <a href='?page=edit&p=".$content['id']."'>edit</a>";
-				echo " <a href='?page=delete&t=".$id_t."'>delete</a>";
+				if ($god) {
+					echo " <a href='?page=delete&t=".$id_t."'>delete</a>";
+				}
 			}
 			echo "<br />".$content['content'];
 			while ($content = mysqli_fetch_assoc($list)) {
 				echo "<br />".$content['date']." No. ".$content['id'];
-				if ($god) {
+				if ($logged) {
 					echo " <a href='?page=edit&p=".$content['id']."'>edit</a>";
-					echo " <a href='?page=delete&p=".$content['id']."'>delete</a>";
+					if ($god) {
+						echo " <a href='?page=delete&p=".$content['id']."'>delete</a>";
+					}
 				}
 				if ($content['archived']) {
 					echo "<br />THIS POST WAS DELETED BY ADMINISTRATOR";

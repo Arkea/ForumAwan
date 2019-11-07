@@ -1,6 +1,6 @@
 <?php 
 	
-	if(defined('IS_INDEX') == false){
+	if(defined('IS_INDEX') == false or !isset($_SESSION["logged"])){
 		die("Stop!");
 	} else {
 		$data = array(

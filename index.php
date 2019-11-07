@@ -20,8 +20,12 @@ require_once('query.php');
 	} else {
 		if (defined("first") == false) {
 			echo "<h1>Selamat datang ";
-			if (isset($_SESSION["godmode"])) {
-				echo "kembali, Admin!!!</h1>";
+			if (isset($_SESSION["logged"])) {
+				if (isset($_SESSION["godmode"])) {
+					echo "kembali, Admin!!!</h1>";
+				} else {
+					echo "kembali, Moderator!!!</h1>";
+				}
 				echo '<form action="?page=reset" method="post">
 								<input type="submit" value="logout">
 							</form>';

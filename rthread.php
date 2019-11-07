@@ -1,5 +1,6 @@
-<?php 
-	
+<?php
+
+	date_default_timezone_set("Asia/Jakarta");
 	if(defined('IS_INDEX') == false){
 		die("Stop!");
 	} else {
